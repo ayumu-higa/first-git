@@ -1,0 +1,12 @@
+
+  <% if current_user.followlikeing?(discontent) %>
+    <%= form_for(current_user.likes.find_by(discontent_id: discontent.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :discontent_id, discontent.id %>
+      <%= f.submit 'わかる！！済', class: 'btn btn-warning btn-xs' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.likes.build) do |f| %>
+      <%= hidden_field_tag :discontent_id, discontent.id %>
+      <%= f.submit 'わかる！！', class: 'btn btn-primary btn-xs' %>
+    <% end %>
+  <% end %>

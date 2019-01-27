@@ -1,5 +1,25 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <div class="row">
+    <aside class="col-md-4">
+      <%= form_for(@discontent) do |f| %>
+        
+        <div class="form-group">
+          <%= f.label :title, 'タイトル' %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :content, '不満内容' %>
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        
+        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+    <div class="col-xs-8">
+      <%= render 'discontents/discontents', discontents: @discontents %>
+    </div>
+  </div>
 <% else %>
 
 
@@ -8,7 +28,105 @@
     <h1>今すぐその不満を投稿しよう！</h1>
     <h1>Welcome to the Humanposts</h1>
     <p>医療や福祉の不満募集中！どんどん書き込んじゃって下さい！</p>
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    <%= link_to 'Sign up now!(無料登録ボタン)', signup_path, class: 'btn btn-lg btn-primary' %>
   </div>
+
+</div>
+<div class="text-center">
+  <h2>不満の例</h2>
+</div>
+ <div class="row">
+  
+  <div class="col-lg-3">
+   <img class ="img crircle" src="https://prog-8.com/images/html/advanced/html.png" alt="Generic placeholder image"　width="150" height="150">
+  <h4>　介護施設</h4>
+  <p>ご家族の方、「最近青あざが多いよね、ケガの報告もないし、ちゃんとケアしてるのかな？」スタッフ「自分はこんなに頑張ってるのに処遇改善はこんだけ？ちゃんと評価してるのかな？」など</p>
+  </div>
+  
+  <div class="col-lg-3">
+   <img class ="img crircle" src="https://prog-8.com/images/html/advanced/jQuery.png" alt="Generic placeholder image"　width="150" height="150">
+  <h4>障がい者施設</h4>
+  <p>ご家族の方、「ショートステイの予約はなんで1か月以上も前からしないといけないの？」「連絡帳はいつも２，３行、いつも同じ内容、ちゃんとケアしてるの？」</p>
+  </div>
+  
+  <div class="col-lg-3">
+   <img class ="img crircle" src="https://prog-8.com/images/html/advanced/ruby.png" alt="Generic placeholder image"　width="150" height="150">
+  <h4>　医療機関</h4>
+  <p>「予約してるのになんで30分も待つの？」「ほんとうに必要な検査だけにしている？なんか請求金額が高い」</p>
+  </div>
+  
+  <div class="col-lg-3">
+   <img class ="img crircle" src="https://prog-8.com/images/html/advanced/php.png" alt="Generic placeholder image"　width="150" height="150">
+  <h4>　 保育園</h4>
+  <p>ご家族の方、「認可保育園を増やしてほしい、無認可でもちゃんとやっているところはあると思うけど、そこがどこなのか見える化してほしい」「無認可に1歳児を預ける場合、部屋の広さやスタッフの人数など足りてるのかきになる」</p>
+  </div>
+
+
+ <div class="text-center">
+   <h2>FAQ</h2>
+   
+ </div>
+　<section>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">会社名や施設名などかいていいの？ </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <h3>はい、書いてもらってOKです、</h3>
+          <p>ただし、メディアで扱われた名前（芸能人など）以外の個人情報（個人名）は、書かないでください </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">なんで、こんなサービスしているんですか？ </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <h3>医療や福祉のサービスの質向上に、皆様から頂いた貴重な不満を扱わさせてもらいます</h3>
+          <p>不満以外にも、提案など頂けましたら大変うれしいです。 </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">こんな事かいて、サービスの質が向上するのですか？ </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <h3>いかにも、おっしゃる通りでございます</h3>
+          <p>ただ、私どもは今よりも少しでも良い方向へと変わってもらえればと思います。私どもは元々は介護畑です。ご家族さんやスタッフの悩みや苦労はわからないかもしれません。でも、いいたくても言えないそんな気持ちはわかります。あなた様の不満投稿で、あなた様のご利用になっているサービスは変わらないのかもしれません、しかし遠く離れた地域で、もしかするとサービスの改善がされる可能性もあるのです </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapsefoo">質問 </a>
+        </h4>
+      </div>
+      <div id="collapsefoo" class="panel-collapse collapse ">
+        <div class="panel-body">
+          <h3>OK</h3>
+          <p>コメント</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
 </div>
 <% end %>

@@ -1,0 +1,26 @@
+<ul class="media-list">
+  <% discontents.each do |discontent| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(discontent.user, { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to discontent.user.name, user_path(discontent.user) %> <span class="text-muted">posted at <%= discontent.created_at %></span>
+        </div>
+        <div>
+          <p><%= discontent.title %></p>
+          <p><%= discontent.content %></p>
+        </div>
+        <div>
+          <% if current_user == discontent.user %>
+            <%= link_to "Delete", discontent, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+          <% end %>
+          <%= render 'likes/followlike_button', discontent: discontent %>
+        </div>
+        
+      </div>
+    </li>
+  <% end %>
+  <%= paginate discontents %>
+</ul>

@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+
+li.media{
+  border-bottom: 1px dashed blue;
+}
+
+form.new_like{
+  display: inline;
+}
+form.edit_like{
+  display: inline;
+}
+a.btn btn-danger{
+  display: inline;
+}
+
+.col-lg-3 img{
+  position: relative;
+}
+
+.col-lg-3 h4{
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  left: 30px;
+  color: white;
+  
+}
