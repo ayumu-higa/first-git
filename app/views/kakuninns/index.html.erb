@@ -1,4 +1,4 @@
-<h1>みんなの不満一覧</h1>
+<h1>内容確認ページ</h1>
 
 <ul class="media-list">
   <% @discontents.each do |discontent| %>
@@ -19,11 +19,12 @@
           <% if current_user == discontent.user %>
             <%= link_to "Delete", discontent, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
-          <%= render 'likes/followlike_button', discontent: discontent %>
+          
         </div>
-
+        <%= link_to "YES", kakuninns_path(discontent_id: discontent.id, naiyou_id: "yes"), method: :post,  class: 'btn btn-primary' %>
+        <%= link_to "NO", kakuninns_path(discontent_id: discontent.id, naiyou_id: "no"), method: :post,  class: 'btn btn-danger' %>
       </div>
     </li>
   <% end %>
-  
+  <%= paginate @discontents %>
 </ul>

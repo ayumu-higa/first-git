@@ -2,6 +2,17 @@
   <div class="row">
     <aside class="col-md-4">
       <%= form_for(@discontent) do |f| %>
+      
+       
+        <%= render 'layouts/error_messages', model: f.object %>
+        
+        <div class="form-group">
+          <%= f.label :category_id %>
+          <%# データベースの情報を基にデータを取得する方法 %>
+          <%= f.collection_select :category_id, Category.all, :id, :name %>
+        </div>
+        
+        
         
         <div class="form-group">
           <%= f.label :title, 'タイトル' %>
@@ -9,11 +20,14 @@
         </div>
         
         <div class="form-group">
-          <%= f.label :content, '不満内容' %>
+          <%= f.label :content, '不満内容 (15文字以上で記入下さい)' %>
           <%= f.text_area :content, class: 'form-control', rows: 5 %>
         </div>
         
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+        
+       
+        
       <% end %>
     </aside>
     <div class="col-xs-8">
@@ -25,7 +39,7 @@
 
 <div class="center jumbotron">
   <div class="text-center">
-    <h1>今すぐその不満を投稿しよう！</h1>
+    <h1>今すぐその不満を売ろう！</h1>
     <h1>Welcome to the Humanposts</h1>
     <p>医療や福祉の不満募集中！どんどん書き込んじゃって下さい！</p>
     <%= link_to 'Sign up now!(無料登録ボタン)', signup_path, class: 'btn btn-lg btn-primary' %>
@@ -113,17 +127,47 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title accordion-toggle">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapsefoo">質問 </a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapsefoo" class="collapsed">本当に1投稿10円で買い取ってくれるんですか？</a>
         </h4>
       </div>
       <div id="collapsefoo" class="panel-collapse collapse ">
         <div class="panel-body">
-          <h3>OK</h3>
-          <p>コメント</p>
+          <h3>はい、買い取らせていただきます！</h3>
+          <p>ただし、医療や福祉の分野でのクレーム（不満）、提案などを対象としておりますので、まったく関係のない、もしくは、日本語の意味が通じない場合は買取できない場合があります。詳しくは不満の書き方を参照ください。</p>
         </div>
       </div>
     </div>
     
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapsefive" class="collapsed">口座の設定などの個人情報の管理は大丈夫なの？</a>
+        </h4>
+      </div>
+      <div id="collapsefive" class="panel-collapse collapse ">
+        <div class="panel-body">
+          <h3>個人情報の利用は口座への振り込みなどに使用するためのものであり、外部に漏らすことはあり得ません</h3>
+          <p></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title accordion-toggle">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapsesix" class="collapsed">買い取った不満などはどこに提供するんですか？</a>
+        </h4>
+      </div>
+      <div id="collapsesix" class="panel-collapse collapse ">
+        <div class="panel-body">
+          <h3>主に医療や福祉の企業様に皆様からいただいた、不満や提案などを分析しまとめて情報として提供しています。当たり前ですが個人情報の提供は致しません。</h3>
+          <p>このサービスは、私どもが介護業界にいるころから、こんなサービスあったらいいかもしれないなという所からはじまっています。</p>
+        </div>
+      </div>
+    </div>
+    
+    
+   
   </div>
 </section>
 

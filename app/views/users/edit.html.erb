@@ -1,0 +1,41 @@
+<h1>プロフィール編集画面（口座設定）</h1>
+<p>口座情報を入力していただけないとcash申請はできませんので、申請前には口座設定お願いします。</p>
+
+<%= form_for(@user) do |f| %>
+     <%= render 'layouts/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <%= f.label :bankaccount_name, 'Name' %>
+        <%= f.text_field :bankaccount_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bankaccount_kananame, 'フリガナ' %>
+        <%= f.text_field :bankaccount_kananame, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :kinyuu_name, '金融機関名（口座種別：普通、当座の種類も書いて下さい）' %>
+        <%= f.text_field :kinyuu_name, class: 'form-control' %>
+      </div>
+      
+       <div class="form-group">
+        <%= f.label :siten_name, '支店名' %>
+        <%= f.text_field :siten_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bankaccount, '口座番号' %>
+        <%= f.text_field :bankaccount, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '口座登録', class: 'btn btn-primary btn-block' %>
+      
+      
+  <% end %>
+        
+       <% if @discontents_count >= 2 && current_user.bankaccount_name != nil && current_user.bankaccount != nil && current_user.bankaccount_kananame != nil && current_user.kinyuu_name != nil && current_user.siten_name != nil %>
+         <%= link_to "cash申請", ikkatus_path, method: :post,  class: 'btn btn-success btn-xs' %>
+    　 <% end %>
+    　 
+    <p>なお、振込手数料はお客様負担となります。</p>

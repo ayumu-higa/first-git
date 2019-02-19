@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     discontent = Discontent.find(params[:discontent_id])
     current_user.followlike(discontent)
     flash[:success] = '不満を「わかる！！」しました。'
-    redirect_to root_url
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy

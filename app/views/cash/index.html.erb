@@ -1,4 +1,4 @@
-<h1>みんなの不満一覧</h1>
+<h1>cash受付ページ</h1>
 
 <ul class="media-list">
   <% @discontents.each do |discontent| %>
@@ -19,11 +19,16 @@
           <% if current_user == discontent.user %>
             <%= link_to "Delete", discontent, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
-          <%= render 'likes/followlike_button', discontent: discontent %>
+          
         </div>
-
+        <%= link_to "支払い完了", cash_index_path(discontent_id: discontent.id, payment_id: 'kanryou'), method: :post,  class: 'btn btn-primary' %>
+        <%= discontent.user.bankaccount %>
+        <%= discontent.user.bankaccount_name %>
+        <%= discontent.user.bankaccount_kananame %>
+        <%= discontent.user.kinyuu_name %>
+        <%= discontent.user.siten_name %>
       </div>
     </li>
   <% end %>
-  
+  <%= paginate @discontents %>
 </ul>

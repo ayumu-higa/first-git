@@ -4,10 +4,17 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+  validates :bankaccount, length: { maximum: 50 }
+  validates :bankaccount_name, length: { maximum: 50 }
+  validates :bankaccount_kananame, length: { maximum: 50 }
+  validates :kinyuu_name, length: { maximum: 50 }
+  validates :siten_name, length: { maximum: 50 }
+  
   
   has_secure_password
   has_many :discontents, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :otoiawases
   
   has_many :followlikeings, through: :likes, source: :discontent
   

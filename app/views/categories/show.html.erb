@@ -1,4 +1,4 @@
-<h1>みんなの不満一覧</h1>
+<h1><%= @category.name %>一覧</h1>
 
 <ul class="media-list">
   <% @discontents.each do |discontent| %>
@@ -21,9 +21,9 @@
           <% end %>
           <%= render 'likes/followlike_button', discontent: discontent %>
         </div>
-
+        
       </div>
     </li>
   <% end %>
-  
+  <%= paginate @discontents %>
 </ul>

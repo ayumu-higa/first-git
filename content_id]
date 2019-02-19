@@ -1,0 +1,30 @@
+
+[1mFrom:[0m /home/ec2-user/environment/discontents/app/controllers/kakuninns_controller.rb @ line 19 KakuninnsController#create:
+
+     [1;34m8[0m: [32mdef[0m [1;34mcreate[0m
+     [1;34m9[0m:   [1;34m# 内容確認ページで、YESかNOを選択したときにとぶところ[0m
+    [1;34m10[0m:   [1;34m# params[:discontents_id]にはnaiyouを変更したいdiscontentの主キーが入っている[0m
+    [1;34m11[0m:   [1;34m# 要復習find(主キー)の使い方[0m
+    [1;34m12[0m:   @discontent = [1;34;4mDiscontent[0m.find(params[[33m:discontent_id[0m])
+    [1;34m13[0m:   [1;34m#kakuninns.html.erbでlink_toで１つ１つ受け取れるようにしているからストロングパラメーターにはかかなくていい[0m
+    [1;34m14[0m:   [32mif[0m params[[33m:naiyou_id[0m] == [31m[1;31m'[0m[31myes[1;31m'[0m[31m[0m
+    [1;34m15[0m:    binding.pry
+    [1;34m16[0m:     [1;34m#もビュー側で１つ１つなのでストロングパラメーターには書かなくていい[0m
+    [1;34m17[0m:     [1;34m# 前の画面でnaiyou_idという名前のパラメーターを送っている[0m
+    [1;34m18[0m:     [1;34m# その中身がyesであるので、ここを実行している[0m
+ => [1;34m19[0m:     @discontent.naiyou = [1;34m1[0m
+    [1;34m20[0m:     @discontent.save
+    [1;34m21[0m: 
+    [1;34m22[0m:     flash[[33m:success[0m] = [31m[1;31m'[0m[31m確認済み投稿成功[1;31m'[0m[31m[0m
+    [1;34m23[0m:     redirect_back([35mfallback_location[0m: root_path)
+    [1;34m24[0m:   [32melsif[0m params[[33m:naiyou_id[0m] == [31m[1;31m'[0m[31mno[1;31m'[0m[31m[0m
+    [1;34m25[0m:      @discontent.naiyou = [1;34m2[0m
+    [1;34m26[0m:      @discontent.save
+    [1;34m27[0m:      flash.now[[33m:danger[0m] = [31m[1;31m'[0m[31m投稿制限にかかりました[1;31m'[0m[31m[0m
+    [1;34m28[0m:      redirect_back([35mfallback_location[0m: root_path)
+    [1;34m29[0m:   [32mend[0m
+    [1;34m30[0m:     
+    [1;34m31[0m:        
+    [1;34m32[0m:   
+    [1;34m33[0m: [32mend[0m
+

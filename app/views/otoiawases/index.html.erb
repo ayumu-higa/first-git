@@ -1,0 +1,26 @@
+<h1>お問い合わせ確認ページ</h1>
+
+<ul class="media-list">
+  <% @otoiawases.each do |otoiawase| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(otoiawase.user, { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to otoiawase.user.name, user_path(otoiawase.user) %> <span class="text-muted">posted at <%= otoiawase.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+        </div>
+        <div>
+          <p>内容:<%= otoiawase.content %></p>
+          <p>名前 : <%= otoiawase.user.name %></p>
+          <p>メール<%= otoiawase.user.email %></p>
+          
+        </div>
+        
+        <%= link_to "返信済み", hensins_otoiawase_path(id: otoiawase.id, hensin_id: "true"), method: :patch,  class: 'btn btn-primary' %>
+        
+    　　
+    </li>
+  <% end %>
+  <%= paginate @otoiawases %>
+</ul>

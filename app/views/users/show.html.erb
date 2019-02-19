@@ -8,6 +8,8 @@
         <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
     </div>
+    <h4>本日はあと、<%= @count_current_user_discontents %>件不満を投稿できます！</h4>
+    <h4>現在のキャシュ：<%= @count_current_user_cash %>円です</h4>
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">

@@ -6,9 +6,10 @@
       </div>
       <div class="media-body">
         <div>
-          <%= link_to discontent.user.name, user_path(discontent.user) %> <span class="text-muted">posted at <%= discontent.created_at %></span>
+          <%= link_to discontent.user.name, user_path(discontent.user) %> <span class="text-muted">posted at <%= discontent.created_at.strftime("%Y-%m-%d %H:%M") %></span>
         </div>
         <div>
+          <p>カテゴリー : <%= discontent.category.name %></p>
           <p><%= discontent.title %></p>
           <p><%= discontent.content %></p>
         </div>
@@ -19,6 +20,28 @@
           <%= render 'likes/followlike_button', discontent: discontent %>
         </div>
         
+       <% if current_user == discontent.user %>
+       
+       <% if discontent.naiyou == 0 %>
+        <%= '投稿申請中' %>
+       <% elsif discontent.naiyou == 1 %>
+        <%= '投稿済み' %>
+       <% else %>
+    　 <%= "投稿制限にかかりました" %>
+    　 <% end %>
+    　 
+    　 <% if discontent.payment == 0 %>
+    　 <%= 'cash未申請' %>
+    　 <% elsif discontent.payment == 1 %>
+    　 <%= 'cash申請済み' %>
+    　 <% else %>
+    　 <%= 'cash支払い済み' %>
+    　 <% end %>
+    　 
+    　 
+    　 
+    　 
+    　 <% end %>
       </div>
     </li>
   <% end %>
